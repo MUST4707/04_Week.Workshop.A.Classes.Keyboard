@@ -29,7 +29,7 @@ flowchart TD
         adsr --> filt
     end
 
-    subgraph Global_Audio_Chain
+    subgraph
         master[Master Gain]
         dest[(Destination / speakers)]
     end
