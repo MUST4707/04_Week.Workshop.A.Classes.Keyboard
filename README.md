@@ -21,8 +21,8 @@ flowchart TD
     subgraph SynthNote
         osc1[OscillatorNode: sawtooth]
         osc2[OscillatorNode: sine - half freq]
-        adsr[Gain: ADSR envelope]
-        filt[BiquadFilterNode: lowpass]
+        adsr((Gain: ADSR envelope))
+        filt{BiquadFilterNode: lowpass}
 
         osc1 --> adsr
         osc2 --> adsr
@@ -30,7 +30,7 @@ flowchart TD
     end
 
     
-    master[Master Gain]
+    master((Master Gain))
     dest[(Destination / speakers)]
     
 
