@@ -20,17 +20,21 @@ Each note you play will eventually follow this signal flow:
 flowchart TD
     subgraph SynthNote
         osc1[OscillatorNode: sawtooth]
-        osc2[OscillatorNode: sine (freq/2)]
+        osc2[OscillatorNode: sine - half freq]
         adsr[Gain: ADSR envelope]
-        filter[BiquadFilterNode: lowpass]
+        filt[BiquadFilterNode: lowpass]
 
         osc1 --> adsr
         osc2 --> adsr
-        adsr --> filter
+        adsr --> filt
     end
 
-    filter --> master[Master Gain]
-    master --> dest[(Destination / speakers)]
+    subgraph Global_Audio_Chain
+        master[Master Gain]
+        dest[(Destination / speakers)]
+    end
+
+    filt --> master --> dest
 ```
 
 ---
