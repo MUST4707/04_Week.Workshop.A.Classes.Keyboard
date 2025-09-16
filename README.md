@@ -18,18 +18,19 @@ Each note you play will eventually follow this signal flow:
 
 ```mermaid
 flowchart TD
-    osc1[OscillatorNode<br/>type=sawtooth]
-    osc2[OscillatorNode<br/>type=sine (freq/2)]
-    adsr[Gain<br/>ADSR envelope]
-    filter[BiquadFilterNode<br/>lowpass]
-    master[Master Gain]
-    dest[(Destination<br/>speakers)]
+    subgraph SynthNote
+        osc1[OscillatorNode: sawtooth]
+        osc2[OscillatorNode: sine (freq/2)]
+        adsr[Gain: ADSR envelope]
+        filter[BiquadFilterNode: lowpass]
 
-    osc1 --> adsr
-    osc2 --> adsr
-    adsr --> filter
-    filter --> master
-    master --> dest
+        osc1 --> adsr
+        osc2 --> adsr
+        adsr --> filter
+    end
+
+    filter --> master[Master Gain]
+    master --> dest[(Destination / speakers)]
 ```
 
 ---
