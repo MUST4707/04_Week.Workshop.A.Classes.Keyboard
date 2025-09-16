@@ -16,42 +16,21 @@ The code here sets up:
 
 Each note you play will eventually follow this signal flow:
 
+```mermaid
+flowchart TD
+    osc1[OscillatorNode<br/>type=sawtooth]
+    osc2[OscillatorNode<br/>type=sine (freq/2)]
+    adsr[Gain<br/>ADSR envelope]
+    filter[BiquadFilterNode<br/>lowpass]
+    master[Master Gain]
+    dest[(Destination<br/>speakers)]
+
+    osc1 --> adsr
+    osc2 --> adsr
+    adsr --> filter
+    filter --> master
+    master --> dest
 ```
-
-+----------------------------------------------------------+
-\|                   SynthNote                              |
-\|                                                          |
-\|   +-------------------+         +-------------------+    |
-\|   | OscillatorNode    |         | OscillatorNode    |    |
-\|   | type=sawtooth     |         | type=sine (freq/2)|    |
-\|   +-------------------+         +-------------------+    |
-\|              \                       /                   |
-\|               \                     /                    |
-\|                v                   v                     |
-\|                +-------------------+                     |
-\|                |       Gain        |                     |
-\|                |   ADSR envelope   |                     |
-\|                +-------------------+                     |
-\|                        |                                 |
-\|                        v                                 |
-\|                +-------------------+                     |
-\|                |  BiquadFilterNode |                     |
-\|                |    type=lowpass   |                     |
-\|                +-------------------+                     |
-+----------------------------------------------------------+
-|
-v
-+-------------------+
-\|     Master Gain   |
-+-------------------+
-|
-v
-+-------------------+
-\|   Destination     |
-\|   (speakers)      |
-+-------------------+
-
-````
 
 ---
 
