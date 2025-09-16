@@ -19,7 +19,7 @@ Each note you play will eventually follow this signal flow:
 ```mermaid
 flowchart TD
     subgraph SynthNote
-        osc1[OscillatorNode: sawtooth]
+        osc1@{shape: paper-tape, label: OscillatorNode: sawtooth}
         osc2[OscillatorNode: sine - half freq]
         adsr((Gain: ADSR envelope))
         filt{BiquadFilterNode: lowpass}
@@ -31,7 +31,7 @@ flowchart TD
 
     
     master((Master Gain))
-    dest[(Destination / speakers)]
+    dest[/Destination / speakers\]
     
 
     filt --> master --> dest
