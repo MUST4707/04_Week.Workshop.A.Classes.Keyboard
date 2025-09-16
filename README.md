@@ -20,7 +20,7 @@ Each note you play will eventually follow this signal flow:
 flowchart TD
     subgraph SynthNote
         osc1@{shape: paper-tape, label: OscillatorNode - sawtooth}
-        osc2[OscillatorNode: sine - half freq]
+        osc2@@{shape: paper-tape, label: OscillatorNode - sine - half freq]
         adsr((Gain: ADSR envelope))
         filt{BiquadFilterNode: lowpass}
 
