@@ -29,10 +29,10 @@ flowchart TD
         adsr --> filt
     end
 
-    subgraph
-        master[Master Gain]
-        dest[(Destination / speakers)]
-    end
+    
+    master[Master Gain]
+    dest[(Destination / speakers)]
+    
 
     filt --> master --> dest
 ```
